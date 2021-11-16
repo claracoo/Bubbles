@@ -18,12 +18,11 @@ const Circles = (props) => {
       }, [current])
 
       let handleTriggerDetails = ({ triggerName }) => {
-         console.log(triggerName)
          setCurrent(triggerName);
        };
 
    return (
-      <View  style={{display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+      <View  style={{display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "center", alignItems: "center"}} onPress={() => handleTriggerDetails({triggerName: "current"})}>
         {current === "current" && <View style={styles.mainViz}>
             <View style={{width: 230, height: 230, borderWidth: 1, borderColor: "#E5E5E5", borderRadius: 200, justifyContent: "center", alignItems: "center", position: "relative"}}>
                <Text style={styles.centerText}>Feelings</Text>
@@ -38,8 +37,8 @@ const Circles = (props) => {
                )}
             </View>
          </View>}
-         {current !== "current" && <View>
-               <TouchableOpacity style={{ backgroundColor: types[current][1], borderRadius: 260 / 2, width: 260, height: 260, display:"flex", justifyContent: "center", alignItems: "center"}}>
+         {current !== "current" && <View >
+               <TouchableOpacity style={{ backgroundColor: types[current][1], borderRadius: 260 / 2, width: 260, height: 260, display:"flex", justifyContent: "center", alignItems: "center"}} onPress={() => setCurrent("current")}>
                   <Text style={{fontSize: 10, fontWeight: "bold", color: "white", marginBottom: 10}}>{types[current][0] * props.total / 300} stories recorded</Text>
                   <Text style={{fontSize: 30, fontWeight: "bold", color: "white", marginBottom: 20}}>{current}</Text>
                   <Text style={{fontSize: 12, color: "white", marginBottom: 10, textAlign: "center"}}>Fear refers to the irrational status that is caused by an unpleasant condition.</Text>
